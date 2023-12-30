@@ -1,6 +1,6 @@
-from django.urls import path
-from . import views
+# from django.urls import path
+# from . import views
 
-urlpatterns = [
-    path('ti/', views.renderHome),
-]
+# urlpatterns = [
+#     path('ai-generator/', views.renderHome),
+# ]
