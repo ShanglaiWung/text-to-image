@@ -1,30 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text to Image AI Generator</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="{% static 'images/text-to-image.png' %}" alt="Text-to-image Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'services' %}">Services</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+{% extends 'base.html' %}
+{% block body %}
     <div class="main-container">
         <h1>Text to Image AI Generator</h1>
         <div class="input-container">
@@ -66,6 +41,4 @@
             document.getElementById('generatedImage').src = placeholderImageUrl;
         }
     </script>
-</body>
-
-</html>
+{% endblock %}
