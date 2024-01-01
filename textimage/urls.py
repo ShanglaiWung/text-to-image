@@ -17,12 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from ti import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('ti/', include('ti.urls'))
-    path('', views.renderHome, name='home'),
-    path('about/', views.renderAbout, name='about'),
-    path('services/', views.renderServices, name='services'),
-    path('contact/', views.renderContactUs, name='contact'),    
-]
+    path('', views.renderhome, name='home'),
+    path('about/', views.renderabout, name='about'),
+    path('services/', views.renderservices, name='services'),
+    path('contact/', views.rendercontact, name='contact'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

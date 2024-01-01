@@ -1,44 +1,18 @@
 {% extends 'base.html' %}
-{% block body %}
-    <div class="main-container">
-        <h1>Text to Image AI Generator</h1>
-        <div class="input-container">
+{% block content %}
+    <h1>Text to Image AI Generator</h1>
+    <div class="input-container">
+        <form method="post" autocomplete="off">
+            {% csrf_token %}
             <label for="textInput">Enter Text:</label>
-            <textarea id="textInput" placeholder="Type your text here..."></textarea>
-            <button onclick="generateImage()">Generate Image</button>
-        </div>
-        <div class="output-container">
-            <h2>Generated Image:</h2>
-            <img id="generatedImage" alt="Generated Image">
-        </div>
+            <textarea id="textInput" placeholder="Type your text here..." name="user_input"></textarea>
+            <button type="submit">Generate Image</button>
+        </form>
     </div>
-
-    <script>
-        function generateImage() {
-            // Replace this section with actual API call to your text-to-image AI model
-            // For demonstration purposes, a placeholder image is used here
-            const placeholderImageUrl = 'https://via.placeholder.com/300';
-            
-            // Get user input
-            const userInput = document.getElementById('textInput').value;
-
-            // Perform API call to the AI model (replace with actual code)
-            // For example:
-            // fetch('your-api-endpoint', {
-            //     method: 'POST',
-            //     body: JSON.stringify({ text: userInput }),
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     },
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     document.getElementById('generatedImage').src = data.imageUrl;
-            // })
-            // .catch(error => console.error('Error:', error));
-
-            // For demonstration purposes, set a placeholder image
-            document.getElementById('generatedImage').src = placeholderImageUrl;
-        }
-    </script>
+<!--    {% if object %}-->
+        <div class="output-container">
+            <h2>Generated Image: {{ object.phrase }}</h2>
+            <img scr="{{ MEDIA_ROOT }}{{object.ai_image.url}}" id="generatedImage" alt="{{object.phrase}}">
+        </div>
+<!--    {% endif %}-->
 {% endblock %}
