@@ -9,10 +9,12 @@
             <button type="submit">Generate Image</button>
         </form>
     </div>
-<!--    {% if object %}-->
+    {% if object %}
         <div class="output-container">
             <h2>Generated Image: {{ object.phrase }}</h2>
-            <img scr="{{ MEDIA_ROOT }}{{object.ai_image.url}}" id="generatedImage" alt="{{object.phrase}}">
+            <div class="generated-image-container">
+                <img src="{{ object.ai_image.url }}" id="generatedImage" alt="{{ object.phrase }}">
+            </div>
         </div>
-<!--    {% endif %}-->
+    {% endif %}
 {% endblock %}

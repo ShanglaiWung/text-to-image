@@ -5,9 +5,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 from django.core.files.base import ContentFile
 from ti.models import Image
-from django.conf import settings
-
-
+from django.shortcuts import redirect
 
 
 load_dotenv()
@@ -41,8 +39,9 @@ def renderhome(request):
         obj = Image(phrase=user_input)
         obj.ai_image.save(file_name, img_file)
         obj.save()
-
-    return render(request, 'ai-generator.html', {'object': obj, 'settings': settings})
+        # return render(request, "ai-generator.html", {"object": obj})
+        return redirect('about', {"object": obj})
+    return render(request, "ai-generator.html")
 
 
 def renderabout(request):

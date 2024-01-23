@@ -14,6 +14,7 @@ header {
 .header-container {
     max-width: 1520px;
     margin: 0 auto;
+    padding: 0 3%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,11 +22,56 @@ header {
 
 .logo {
     width: 15%;
+    align-self: center;
 }
 
 .logo img {
     max-width: 100%;
     height: auto;
+}
+
+.hamburger-container {
+  display: none;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #fff;
+  margin: 6px 0;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.open .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.open .bar2 {opacity: 0;}
+
+.open .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+
+.offcanvas {
+    width: 100% !important;
+    border: none !important;
+    transition: transform 0.7s ease-in-out;
+}
+
+.offcanvas-body ul {
+    list-style: none;
+    padding: 0;
+}
+
+.offcanvas-body ul li {
+    padding: 5px 0;
+}
+
+.offcanvas-body ul li a {
+    text-decoration: none;
+    font-size: 18px;
 }
 
 nav ul {
@@ -38,7 +84,8 @@ nav ul {
 nav a {
     text-decoration: none;
     color: #fff;
-    padding: 10px;
+    font-size: 20px;
+    padding: 10px 25px;
     display: block;
 }
 
@@ -69,9 +116,10 @@ textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+    box-sizing: border-box;
 }
 
-button {
+.main-container button {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
@@ -79,7 +127,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.main-container button:hover {
     background-color: #45a049;
 }
 
@@ -87,10 +135,21 @@ button:hover {
     text-align: center;
 }
 
+/* .generated-image-container {
+    width: 100%;
+    height: 500px;
+} */
+
 .main-container img {
     max-width: 100%;
-    height: auto;
+    height: 100%;
     margin-top: 10px;
+}
+
+@media screen and (max-width: 1519px) {
+    .logo {
+        width: 20%;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -117,17 +176,33 @@ button:hover {
     }
 
     .header-container {
-        flex-direction: column;
+        /* flex-direction: row; */
         align-items: flex-start;
     }
 
     .logo {
-        margin-bottom: 10px;
+        width: 40%;
     }
 
     .menu-icon {
         display: block;
         font-size: 24px;
         cursor: pointer;
+    }
+
+    .hamburger-container {
+        display: inline-block;
+        align-self: center;
+        margin: 0 10px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .logo {
+        width: 55%;
+    }
+
+    .header-container {
+        padding: 0;
     }
 }
